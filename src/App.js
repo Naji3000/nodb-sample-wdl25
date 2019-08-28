@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Wishes from "./components/Wishes";
+import Add from "./components/Add";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      section: "wishes"
+    };
+  }
+  render() {
+    return (
+      <div>
+        <Header />
+        <nav>
+          <button onClick={() => this.setState({ section: "wishes" })}>
+            wishes
+          </button>
+          <button onClick={() => this.setState({ section: "add" })}>+</button>
+          <button onClick={() => this.setState({ section: "memories" })}>
+            memories
+          </button>
+        </nav>
+        {this.state.section === "wishes" ? <Wishes /> : null}
+        {this.state.section === "add" ? (
+          <Add changeSection={() => this.setState({ section: "wishes" })} />
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default App;

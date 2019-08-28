@@ -1,0 +1,19 @@
+img {
+  max-width: 20vw;
+  border: 1px solid black;
+  margin: 8px;
+}
+
+img.selected {
+  max-width: 80vw;
+}
+
+.wish-title {
+  font-size: 1.5rem;
+}
+
+.wish-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
